@@ -4,7 +4,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		System.out.println("Hello SE world");
-		//ê¹€ë¯¼íƒœ ì—°ë™ í…ŒìŠ¤íŠ¸ í™•ì¸í•©ë‹ˆë‹¤.
+		//°­À¯Áø ¿¬µ¿ Å×½ºÆ®
 	}
 
 }
