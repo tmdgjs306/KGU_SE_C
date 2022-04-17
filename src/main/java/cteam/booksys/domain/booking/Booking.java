@@ -1,6 +1,6 @@
 package cteam.booksys.domain.booking;
 
-import cteam.booksys.domain.table.Table;
+import cteam.booksys.domain.table.Tables;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,7 +24,7 @@ public class Booking {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "table_number")
-    private Table table;
+    private Tables tables;
 
     public LocalTime getEndTime() {
         return getTime().plusHours(2);
