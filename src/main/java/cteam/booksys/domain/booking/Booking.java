@@ -7,7 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
-
+//for rabase
 @Entity
 @Getter @Setter
 public class Booking {
