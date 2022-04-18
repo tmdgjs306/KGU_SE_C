@@ -11,10 +11,11 @@ public class CustomerRepository {
 
     private final EntityManager em;
 
-    public void createCustomer(String name, String phone) {
+    public Customer createCustomer(String name, String phone) {
         Customer customer = new Customer(name, phone);
 
         em.persist(customer);
+        return customer;
     }
 
     public Customer getCustomerById(Long id) {

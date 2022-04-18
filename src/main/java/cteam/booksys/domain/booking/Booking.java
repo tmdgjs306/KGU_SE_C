@@ -29,4 +29,15 @@ public class Booking {
     public LocalTime getEndTime() {
         return getTime().plusHours(2);
     }
+
+    public Booking(int covers, LocalDate date, LocalTime time, Tables tables) {
+        this.covers = covers;
+        this.date = date;
+        this.time = time;
+        this.tables = tables;
+    }
+
+    protected Booking() {
+
+    }
 }
