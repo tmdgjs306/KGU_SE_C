@@ -10,6 +10,8 @@ import java.time.LocalTime;
 //for rabase
 @Entity
 @Getter @Setter
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn
 public class Booking {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

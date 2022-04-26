@@ -12,17 +12,29 @@ import javax.annotation.PostConstruct;
 @RequiredArgsConstructor
 public class InitData {
 
-    private final TableRepository tr;
+    private final Init init;
 
     @PostConstruct
     public void initTable() {
-        tr.createTable(new Tables(4));
-        tr.createTable(new Tables(4));
-        tr.createTable(new Tables(4));
-        tr.createTable(new Tables(4));
-        tr.createTable(new Tables(6));
-        tr.createTable(new Tables(6));
-        tr.createTable(new Tables(8));
-        tr.createTable(new Tables(8));
+
+        init.initTable();
     }
+
+    @Component
+    @RequiredArgsConstructor
+    static class Init {
+        private final TableRepository tr;
+
+        public void initTable() {
+            tr.createTable(new Tables(4));
+            tr.createTable(new Tables(4));
+            tr.createTable(new Tables(6));
+            tr.createTable(new Tables(6));
+            tr.createTable(new Tables(6));
+            tr.createTable(new Tables(2));
+            tr.createTable(new Tables(2));
+            tr.createTable(new Tables(8));
+        }
+    }
+
 }
