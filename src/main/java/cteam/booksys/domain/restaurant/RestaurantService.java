@@ -46,8 +46,8 @@ public class RestaurantService {
                                    Long tno, String name, String phone) {
         Tables table = tr.getTable(tno);
         Customer customer = cr.getCustomer(name, phone);
-        Reservation reservation = new Reservation(covers, date, time, table, customer, null);
-        br.createReservation(reservation);
+        Reservation reservation = Reservation.createReservation(covers, date, time, table, customer, null);
+        br.saveReservation(reservation);
         return reservation;
     }
 
@@ -56,7 +56,7 @@ public class RestaurantService {
                               LocalTime time, Long tno) {
         Tables table = tr.getTable(tno);
         WalkIn walkIn = new WalkIn(covers, date, time, table);
-        br.createWalkIn(walkIn);
+        br.saveWalkIn(walkIn);
         return walkIn;
     }
 

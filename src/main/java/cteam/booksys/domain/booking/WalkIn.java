@@ -15,7 +15,7 @@ public class WalkIn extends Booking{
         super(covers, date, time, tables);
     }
 
-    public WalkIn() {
+    protected WalkIn() {
         super();
     }
 }

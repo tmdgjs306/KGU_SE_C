@@ -40,6 +40,5 @@ public class Booking {
     }
 
     protected Booking() {
-
     }
 }

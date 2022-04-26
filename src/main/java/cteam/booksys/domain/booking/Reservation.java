@@ -22,10 +22,23 @@ public class Reservation extends Booking{
 
     private LocalTime arrivalTime;
 
-    public Reservation(int covers, LocalDate date , LocalTime time, Tables table, Customer customer, LocalTime arrivalTime) {
+        public Reservation(int covers, LocalDate date , LocalTime time, Tables table, LocalTime arrivalTime) {
         super(covers, date, time, table);
-        this.customer = customer;
         this.arrivalTime = arrivalTime;
+    }
+
+    public void addCustomer(Customer customer) {
+        setCustomer(customer);
+    }
+
+    public void removeCustomer() {
+        setCustomer(null);
+    }
+
+    public static Reservation createReservation(int covers, LocalDate date, LocalTime time, Tables table, Customer customer, LocalTime arrivalTime) {
+        Reservation reservation = new Reservation(covers, date, time, table, arrivalTime);
+        reservation.addCustomer(customer);
+        return reservation;
     }
 
     protected Reservation() {
