@@ -18,6 +18,23 @@ public class BookingRepository {
                 .getResultList();
     }
 
+    public List<Reservation> getAllReservations(LocalDate date) {
+        String query = "select r from Reservation r join fetch r.tables join fetch r.customer " +
+                "where r.date = :date";
+        return em.createQuery(query, Reservation.class)
+                .setParameter("date", date)
+                .getResultList();
+    }
+
+    public List<Reservation> getAllReservationsByCustomer(LocalDate date, Long customerId) {
+        String query = "select r from Reservation r join fetch r.tables join fetch r.customer " +
+                "where r.date = :date and r.customer.id = :customerId";
+        return em.createQuery(query, Reservation.class)
+                .setParameter("date", date)
+                .setParameter("customerId", customerId)
+                .getResultList();
+    }
+
     public void saveReservation(Reservation reservation) {
         em.persist(reservation);
     }
