@@ -28,4 +28,9 @@ public class TableRepository {
         return tables.stream().map(Tables::getNumber)
                 .collect(Collectors.toList());
     }
+
+    public List<Tables> getAllTables() {
+        return em.createQuery("select t From Tables t", Tables.class)
+                .getResultList();
+    }
 }
