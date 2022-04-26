@@ -32,11 +32,18 @@ public class Booking {
         return getTime().plusHours(2);
     }
 
-    public Booking(int covers, LocalDate date, LocalTime time, Tables tables) {
+    public void addTable(Tables tables) {
+        setTables(tables);
+    }
+
+    public void removeTable() {
+        setTables(null);
+    }
+
+    public Booking(int covers, LocalDate date, LocalTime time) {
         this.covers = covers;
         this.date = date;
         this.time = time;
-        this.tables = tables;
     }
 
     protected Booking() {

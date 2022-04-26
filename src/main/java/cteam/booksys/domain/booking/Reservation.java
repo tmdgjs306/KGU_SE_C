@@ -22,8 +22,8 @@ public class Reservation extends Booking{
 
     private LocalTime arrivalTime;
 
-        public Reservation(int covers, LocalDate date , LocalTime time, Tables table, LocalTime arrivalTime) {
-        super(covers, date, time, table);
+        public Reservation(int covers, LocalDate date , LocalTime time, LocalTime arrivalTime) {
+        super(covers, date, time);
         this.arrivalTime = arrivalTime;
     }
 
@@ -36,8 +36,9 @@ public class Reservation extends Booking{
     }
 
     public static Reservation createReservation(int covers, LocalDate date, LocalTime time, Tables table, Customer customer, LocalTime arrivalTime) {
-        Reservation reservation = new Reservation(covers, date, time, table, arrivalTime);
+        Reservation reservation = new Reservation(covers, date, time, arrivalTime);
         reservation.addCustomer(customer);
+        reservation.addTable(table);
         return reservation;
     }
 

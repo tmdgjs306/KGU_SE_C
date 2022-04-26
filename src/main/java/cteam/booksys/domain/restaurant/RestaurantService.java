@@ -55,7 +55,7 @@ public class RestaurantService {
     public Booking makeWalkIn(int covers, LocalDate date,
                               LocalTime time, Long tno) {
         Tables table = tr.getTable(tno);
-        WalkIn walkIn = new WalkIn(covers, date, time, table);
+        WalkIn walkIn = WalkIn.createWalkIn(covers, date, time, table);
         br.saveWalkIn(walkIn);
         return walkIn;
     }
