@@ -13,7 +13,7 @@ public class BookingRepository {
 
     private final EntityManager em;
 
-    public List<Booking> getBookings(LocalDate date) {
+    public List<Booking> getAllBookings(LocalDate date) {
         return em.createQuery("select b from Booking b join fetch b.tables", Booking.class)
                 .getResultList();
     }

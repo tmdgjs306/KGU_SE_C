@@ -18,7 +18,6 @@ public class TableRepository {
         return em.find(Tables.class, tno);
     }
 
-    @Transactional
     public void createTable(Tables tables) {
         em.persist(tables);
     }
