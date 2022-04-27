@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>레스토랑 예약 시스템 메인 페이지</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= 전화번호, 이메일, SNS  ======= -->
+  <section id="topbar" class="d-flex align-items-center">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+      <div class="contact-info d-flex align-items-center">
+        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:restaurant@example.com">restaurant@example.com</a></i>
+        <i class="bi bi-phone d-flex align-items-center ms-4"><span>+82 031-123-4567</span></i>
+      </div>
+      <div class="social-links d-none d-md-flex align-items-center">
+        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= 상단에 레스토랑 바 ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex justify-content-between align-items-center">
+
+      <div class="logo">
+        <h1><a href="Main.html">레스토랑</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= 레스토랑 사진 ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+          <!--레스토랑 사진은 oak hotel 사진임-->
+          <!--사진 안에 식당 설명 추가-->
+          <!-- Slide 1 -->
+          <div class="carousel-item active" style="background-image: url(https://www.oakwoodpremier.co.kr/front2/assets/img-pc/opcc/dining-bar/oak-restaurant/oak_r_01.jpg)">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Restaurant</span></h2>
+                <p class="animate__animated animate__fadeInUp">식당 설명</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="carousel-item" style="background-image: url(https://www.oakwoodpremier.co.kr/front2/assets/img-pc/opcc/dining-bar/oak-restaurant/oak_r_07.jpg)">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated fanimate__adeInDown">Welcome to <span>Restaurant</span></h2>
+                <p class="animate__animated animate__fadeInUp">식당 설명</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="carousel-item" style="background-image: url(https://www.oakwoodpremier.co.kr/front2/assets/img-pc/opcc/dining-bar/oak-restaurant/oak_r_15.jpg)">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Restaurant</span></h2>
+                <p class="animate__animated animate__fadeInUp">식당 설명</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+          <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+        </a>
+
+      </div>
+    </div>
+  </section><!-- 사진 부분 끝 -->
+
+  <main id="main">
+    <!-- ======= 예약이랑 예약 조회 버튼 ======= -->
+    <section id="featured" class="featured">
+      <div class="container">
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="icon-box" type="button"> <!--예약 페이지 이동-->
+                <i class="bi bi-card-checklist"></i>
+                <h2>예약하기</h2>
+                <p>신규 예약을 하시려면 여기를 클릭해주세요.</p>
+              </div>
+            </div>
+            <div class="col-lg-4 mt-4 mt-lg-0">
+              <div class="icon-box" type="button"> <!--예약 조회 페이지 이동-->
+                <i class="bi bi-binoculars"></i>
+                <h2>예약조회</h2>
+                <p>기존의 예약을 확인하거나 수정을 원하시면 여기를 클릭해주세요.</p>
+              </div>
+            </div>
+          </div>
+      </div>
+    </section><!-- 버튼 끝 -->
+  </main><!-- End #main -->
+
+  <!-- ======= 맨 밑 부분 ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h4>주소</h4>
+            <p>
+              경기도 수원시 <br>
+              영통구 광교산로<br>
+              154-42 <br><br>
+              <strong>Tel:</strong> +82 031-123-4567<br>
+              <strong>Email:</strong> restaurant@example.com<br>
+            </p>
+
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-info">
+            <h3>About Restaurant</h3>
+            <p>간단한 소개</p>
+            <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Restaurant</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/eterna-free-multipurpose-bootstrap-template/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- 맨 밑 부분 끝 -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
