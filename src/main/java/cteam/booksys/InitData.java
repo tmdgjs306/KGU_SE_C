@@ -22,6 +22,7 @@ public class InitData {
 
     @Component
     @RequiredArgsConstructor
+    @Transactional
     static class Init {
         private final TableRepository tr;
 

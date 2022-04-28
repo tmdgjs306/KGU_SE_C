@@ -11,11 +11,9 @@ public class CustomerRepository {
 
     private final EntityManager em;
 
-    public Customer createCustomer(String name, String phone) {
-        Customer customer = new Customer(name, phone);
-
+    public Long createCustomer(Customer customer) {
         em.persist(customer);
-        return customer;
+        return customer.getId();
     }
 
     public Customer getCustomerById(Long id) {

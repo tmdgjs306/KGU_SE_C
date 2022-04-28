@@ -3,6 +3,7 @@ package cteam.booksys.domain.booking;
 import cteam.booksys.domain.table.Tables;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
