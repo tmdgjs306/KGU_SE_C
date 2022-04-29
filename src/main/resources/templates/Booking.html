@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>예약하기</title>
+  <style>
+  #SeatSelected {
+    width: 10px; height: 10px;
+    background-color: rgb(210, 45, 45);
+  }
+  #Seat {
+    width: 10px; height: 10px;
+    background-color: rgb(91,214,91);
+  }
+  #table {
+    width: 50px;
+    height: 50px;
+  }
+
+  </style>
+
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <!--jquery-->
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ======= Top Bar ======= -->
+  <section id="topbar" class="d-flex align-items-center">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+      <div class="contact-info d-flex align-items-center">
+        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:restaurant@example.com">restaurant@example.com</a></i>
+        <i class="bi bi-phone d-flex align-items-center ms-4"><span>+82 031-123-4567</span></i>
+      </div>
+      <div class="social-links d-none d-md-flex align-items-center">
+        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex justify-content-between align-items-center">
+
+      <div class="logo">
+        <h1><a href="index.html">레스토랑</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+        <h2>예약하기</h2>
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-6">
+                  <form method="post" role="form" class="php-email-form">
+                      <div class="row">
+                          <div class="col-md-6 form-group">
+                              <label for="datepicker">날짜</label>
+                              <input type="text" name="date" style="width:300px;height:50px;font-size:20px;" class="form-control" id="datepicker" required>
+                              <script>
+                              $(function() {
+                                $("#datepicker").datepicker({
+                                  dateFormat: 'yy-mm-dd' 
+                                  ,showOtherMonths: true 
+                                  ,showMonthAfterYear:true 
+                                  ,changeYear: true
+                                  ,changeMonth: true 
+                                  ,showOn: "both"
+                                  ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" 
+                                  ,buttonImageOnly: true
+                                  ,buttonText: "선택" 
+                                  ,yearSuffix: "년" 
+                                  ,monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
+                                  ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
+                                  ,dayNamesMin: ['일','월','화','수','목','금','토'] 
+                                  ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] 
+                                  ,minDate: 0
+                                  ,maxDate: "+1Y" 
+                                });
+                                $("#datepicker").datepicker();
+                                $.datepicker.setDefaults({
+                                  dateFormat: 'yy-mm-dd' 
+                                });
+                                $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+                              });
+                              </script>
+                                <button type="button"class="btn btn-primary">&nbsp확인</button>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <input type="time"style="width: 200px; height: 50px; font-size:20px;" class="form-control" name="time" required></input>
+                                    <p size="5px"></p>
+                                    <button type="button" class="btn btn-primary">확인</button>
+                                </div>
+                                <aside>
+                                    <div class="form-group mt-3">
+                                        <label for="TS">테이블 선택</label> <br>
+                                        <select name="Table" onchange="handleOnChange(this)">
+                                          <option value=1>1번 테이블</option>
+                                          <option value=2>2번 테이블</option>
+                                          <option value=3>3번 테이블</option>
+                                          <option value=4>4번 테이블</option>
+                                          <option value=5>5번 테이블</option>
+                                          <option value=6>6번 테이블</option>
+                                          <option value=7>7번 테이블</option>
+                                          <option value=8>8번 테이블</option>
+                                        </select>
+                                        <p></p>
+                                        <h5>좌석 배치도</h5>
+                                        <table class="showcase">
+                                            <tr>
+                                                <td><div id="SeatSelected"></div></td>
+                                                <td><small>선택 불가</small></td>
+                                                <td><div id="Seat"></div></td>
+                                                <td><small>선택 가능</small></td>
+                                            </tr>
+                                        </table>
+                                        <table border="1" width="400" height="300"> 
+                                            <tr> 
+                                                <td id="s1" width="100" style="background-color:red;" align="center">1</td> <td id="s2"width="100" style=background-color:rgb(91,214,91); align="center">2</td> <td id="s3" style=background-color:rgb(91,214,91); width="100" align="center">3</td> <td id="s4" style=background-color:rgb(91,214,91); widht="100" align="center">4</td> 
+                                            </tr> 
+                                            <tr> 
+                                                <td id="s5" width="100" style=background-color:rgb(91,214,91); align="center">5</td> <td id="s6" width="100" style=background-color:rgb(91,214,91); align="center">6</td> <td id="s7" width="100" style=background-color:rgb(91,214,91); align="center">7</td> <td id="s8" width="100" style=background-color:rgb(91,214,91); align="center">8</td>
+                                            </tr> 
+                                        </table> 
+                                        <br>
+                                        <br>
+                                        <input width="100" class="btn btn-primary" type="submit" value="예약(제출)">    
+                                    </div>
+                                </aside>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>   
+        </section> 
+        <!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h4>주소</h4>
+            <p>
+              경기도 수원시 <br>
+              영통구 광교산로<br>
+              152-42 <br><br>
+              <strong>Tel:</strong> +82 031-123-4567<br>
+              <strong>Email:</strong> restaurant@example.com<br>
+            </p>
+
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-info">
+            <h3>About Restaurant</h3>
+            <p>간단한 소개</p>
+            <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Restaurant</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/eterna-free-multipurpose-bootstrap-template/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+
+</body>
+
+</html>
