@@ -14,5 +14,5 @@ public class ReservationForm {
 
     private String phoneNumber;
 
-    private int covers;
+    private Integer covers;
 }

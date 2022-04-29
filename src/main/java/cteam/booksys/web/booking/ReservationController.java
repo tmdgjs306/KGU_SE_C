@@ -12,10 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -41,19 +38,7 @@ public class ReservationController {
     public String reservationsTableForm(@ModelAttribute("dateForm") DateForm dateForm, Model model) {
 
         List<Tables> ableTables = rs.findAbleTables(dateForm.getDate(), dateForm.getTime());
-        List<Able> ables = new ArrayList<>();
-
-        boolean flag = false;
-        for (Long i = 1L; i <= 8L; i++) {
-            for (Tables table : ableTables) {
-                if (table.getNumber().equals(i)) {
-                    flag = true;
-                    break;
-                }
-            }
-            if (flag) ables.add(new Able(true));
-            else ables.add(new Able(false));
-        }
+        List<Able> ables = getAbleList(ableTables);
 
         ables.forEach(a -> log.info("{}", a.isAble()));
 
@@ -62,12 +47,6 @@ public class ReservationController {
         model.addAttribute("ables", ables);
 
         return "Table";
-    }
-
-    @Data
-    @AllArgsConstructor
-    static class Able {
-        private boolean able;
     }
 
     @PostMapping("/reservations/new/form")
@@ -99,5 +78,60 @@ public class ReservationController {
         model.addAttribute("bookings", reservations);
 
         return "p2";
+    }
+
+    @PostMapping("/reservations/{id}/cancel")
+    public String cancel(@PathVariable Long id) {
+        rs.removeReservation(id);
+
+        return "redirect:/reservations";
+    }
+
+    @GetMapping("/reservations/{id}/update")
+    public String update(@PathVariable Long id, Model model) {
+
+        Reservation reservation = rs.getReservation(id);
+        List<Tables> ableTables = rs.findAbleTables(reservation.getDate(), reservation.getTime());
+
+        List<Able> ables = getAbleList(ableTables);
+
+        model.addAttribute("reservation", reservation);
+        model.addAttribute("tables", ableTables);
+        model.addAttribute("ables", ables);
+
+        return "TableChange";
+    }
+
+    @PostMapping("/reservations/update")
+    public String update(@RequestParam Long id,
+                         @RequestParam Long tableNumber) {
+
+        rs.updateTableNumber(id, tableNumber);
+
+        return "redirect:/reservations";
+    }
+
+    @Data
+    @AllArgsConstructor
+    static class Able {
+
+        private boolean able;
+    }
+
+    private List<Able> getAbleList(List<Tables> ableTables) {
+        List<Able> ables = new ArrayList<>();
+
+        boolean flag = false;
+        for (Long i = 1L; i <= 8L; i++) {
+            for (Tables table : ableTables) {
+                if (table.getNumber().equals(i)) {
+                    flag = true;
+                    break;
+                }
+            }
+            if (flag) ables.add(new Able(true));
+            else ables.add(new Able(false));
+        }
+        return ables;
     }
 }

@@ -19,7 +19,7 @@ public class Booking {
     @Column(name = "booking_id")
     private Long id;
 
-    private int covers;
+    private Integer covers;
 
     private LocalDate date;
 
@@ -41,7 +41,7 @@ public class Booking {
         setTables(null);
     }
 
-    public Booking(int covers, LocalDate date, LocalTime time) {
+    public Booking(Integer covers, LocalDate date, LocalTime time) {
         this.covers = covers;
         this.date = date;
         this.time = time;

@@ -164,16 +164,16 @@
                 
               </div>
 
+              <form th:action="@{/reservations/new(date=${dateForm.date}, time=${dateForm.time}, tableNumber=${tableNumber})}" th:object="${rForm}" method="post">
               <div class="entry-content">
-                <form th:action="@{/reservations/new(date=${dateForm.date}, time=${dateForm.time})}" th:object="${rForm}">
                 <input th:field="*{name}" type="text" id="name" placeHolder="이름">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input th:field="*{phoneNumber}" type="text" name="cellPhone" id="cellPhone" placeholder="핸드폰번호 ( - 없이 입력)" maxlength="13" onkeyup="up()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input th:field="*{covers}" type="text" id="count" placeHolder="예약 인원수" onkeyup="countUp();"><div></div>
                 <div class="read-more">
-                  <button type="submit" th:class="btn btn-primary">제출</button>
+                  <button type="submit" class="btn btn-primary">제출</button>
                 </div>
-                </form>
               </div>
+              </form>
 
             </article><!-- End blog entry -->
 

@@ -14,7 +14,7 @@ public class BookingRepository {
     private final EntityManager em;
 
     public Reservation getReservation(Long id) {
-        String query = "select r from Reservation r where r.id = :id";
+        String query = "select r from Reservation r join fetch r.tables where r.id = :id";
         return em.createQuery(query, Reservation.class)
                 .setParameter("id", id)
                 .getSingleResult();

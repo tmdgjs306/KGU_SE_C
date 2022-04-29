@@ -11,11 +11,11 @@ import java.time.LocalTime;
 @Entity
 @Getter @Setter
 public class WalkIn extends Booking{
-    public WalkIn(int covers, LocalDate date, LocalTime time) {
+    public WalkIn(Integer covers, LocalDate date, LocalTime time) {
         super(covers, date, time);
     }
 
-    public static WalkIn createWalkIn(int covers, LocalDate date, LocalTime time, Tables tables) {
+    public static WalkIn createWalkIn(Integer covers, LocalDate date, LocalTime time, Tables tables) {
         WalkIn walkIn = new WalkIn(covers, date, time);
         walkIn.addTable(tables);
         return walkIn;

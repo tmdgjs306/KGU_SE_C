@@ -13,9 +13,9 @@ public class Tables {
     @Column(name = "table_number")
     private Long number;
 
-    private int places;
+    private Integer places;
 
-    public Tables(int places) {
+    public Tables(Integer places) {
         this.places = places;
     }
 

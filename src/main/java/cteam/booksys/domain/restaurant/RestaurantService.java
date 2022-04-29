@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
+@Transactional
 @Slf4j
 public class RestaurantService {
 
@@ -29,22 +29,33 @@ public class RestaurantService {
     private final CustomerRepository cr;
     private final TableRepository tr;
 
-    public void createReservation(int covers, LocalDate date, LocalTime time, Long tno, Long customerId) {
+    public void createReservation(Integer covers, LocalDate date, LocalTime time, Long tno, Long customerId) {
         Tables table = tr.getTable(tno);
         Customer customer = cr.getCustomerById(customerId);
         Reservation reservation = Reservation.createReservation(covers, date, time, table, customer);
         br.saveReservation(reservation);
     }
 
-    public void createWalkIn(int covers, LocalDate date, LocalTime time, Long tno) {
+    public void createWalkIn(Integer covers, LocalDate date, LocalTime time, Long tno) {
         Tables table = tr.getTable(tno);
         WalkIn walkIn = WalkIn.createWalkIn(covers, date, time, table);
         br.saveWalkIn(walkIn);
     }
 
+    public Reservation getReservation(Long id) {
+        return br.getReservation(id);
+    }
+
     public void removeReservation(Long rId) {
         Reservation reservation = br.getReservation(rId);
         br.deleteBooking(reservation);
+    }
+
+    public void updateTableNumber(Long id, Long tableNumber) {
+        Reservation reservation = br.getReservation(id);
+        Tables table = tr.getTable(tableNumber);
+        reservation.removeTable();
+        reservation.addTable(table);
     }
 
     public List<Reservation> getReservationsByDate(LocalDate date) {
@@ -67,7 +78,8 @@ public class RestaurantService {
 
         List<Reservation> reservations = br.getAllReservations(date);
         List<Reservation> unAbleReservations = reservations.stream()
-                .filter(r -> (time.isAfter(r.getTime()) && time.isBefore(r.getEndTime())))
+                .filter(r -> ((time.isAfter(r.getTime()) && time.isBefore(r.getEndTime())) ||
+                        r.getTime().isAfter(time) && r.getTime().isBefore(time.plusHours(2))))
                 .collect(Collectors.toList());
         List<Tables> tables = tr.getAllTables();
         tables.removeIf(t -> {
@@ -76,6 +88,7 @@ public class RestaurantService {
             }
             return false;
         });
+        log.info("ablesTable size = {}", tables.size());
         return tables;
     }
 }

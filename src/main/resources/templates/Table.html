@@ -91,13 +91,13 @@
       <div class="container">
           <div class="row">
               <div class="col-lg-6">
-                  <form th:action="@{/reservations/new/(date=${dateForm.date}, time=${dateForm.time})}" method="post" role="form">
+                  <form th:action="@{/reservations/new/form(date=${dateForm.date}, time=${dateForm.time})}" method="post" role="form">
                       <div class="row">
                                 <aside>
                                     <div class="form-group mt-3">
                                         <label for="TS">테이블 선택</label> <br>
-                                        <select th:each="table : ${tables}" th:name="tableNumber" name="Table" onchange="handleOnChange(this)">
-                                          <option th:value="${table.number}" th:text="${table.number} + '번 테이블'" value=1>1번 테이블</option>
+                                        <select name="Table" th:name="tableNumber" onchange="handleOnChange(this)">
+                                          <option th:each="table : ${tables}" th:value="${table.number}" th:text="${table.number} + '번 테이블'" value=1>1번 테이블</option>
                                         </select>
                                         <p></p>
                                         <h5>좌석 배치도</h5>
