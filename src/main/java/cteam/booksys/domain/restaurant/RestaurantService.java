@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -55,6 +56,11 @@ public class RestaurantService {
     }
 
     public List<Tables> findAbleTables(LocalDate date, LocalTime time) {
+
+        if (date == null || time == null){
+            return new ArrayList<>();
+        }
+
         List<Reservation> reservations = br.getAllReservations(date);
         List<Reservation> unAbleReservations = reservations.stream()
                 .filter(r -> (time.isAfter(r.getTime()) && time.isBefore(r.getEndTime())))

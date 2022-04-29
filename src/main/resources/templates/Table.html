@@ -5,10 +5,30 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>레스토랑 예약 시스템 메인 페이지</title>
+  <title>예약하기2</title>
+  <style>
+  #SeatSelected {
+    width: 10px; height: 10px;
+    background-color: rgb(210, 45, 45);
+  }
+  #Seat {
+    width: 10px; height: 10px;
+    background-color: rgb(91,214,91);
+  }
+  #table {
+    width: 50px;
+    height: 50px;
+  }
+
+  </style>
+
   <meta content="" name="description">
   <meta content="" name="keywords">
-
+  <!--jquery-->
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  
   <!-- Favicons -->
   <link href="/assets/img/favicon.png" rel="icon">
   <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -26,12 +46,11 @@
 
   <!-- Template Main CSS File -->
   <link href="/assets/css/style.css" rel="stylesheet">
-
 </head>
 
 <body>
 
-  <!-- ======= 전화번호, 이메일, SNS  ======= -->
+  <!-- ======= Top Bar ======= -->
   <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
@@ -46,97 +65,74 @@
     </div>
   </section>
 
-  <!-- ======= 상단에 레스토랑 바 ======= -->
+  <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex justify-content-between align-items-center">
 
       <div class="logo">
-        <h1><a href="Main.html">레스토랑</a></h1>
+        <h1><a href="index.html">레스토랑</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="/assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
-
-      <nav id="navbar" class="navbar">
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
     </div>
   </header><!-- End Header -->
 
-  <!-- ======= 레스토랑 사진 ======= -->
-  <section id="hero">
-    <div class="hero-container">
-      <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
-
-        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
-
-        <div class="carousel-inner" role="listbox">
-          <!--레스토랑 사진은 oak hotel 사진임-->
-          <!--사진 안에 식당 설명 추가-->
-          <!-- Slide 1 -->
-          <div class="carousel-item active" style="background-image: url(https://www.oakwoodpremier.co.kr/front2//assets/img-pc/opcc/dining-bar/oak-restaurant/oak_r_01.jpg)">
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Restaurant</span></h2>
-                <p class="animate__animated animate__fadeInUp">식당 설명</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 2 -->
-          <div class="carousel-item" style="background-image: url(https://www.oakwoodpremier.co.kr/front2//assets/img-pc/opcc/dining-bar/oak-restaurant/oak_r_07.jpg)">
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2 class="animate__animated fanimate__adeInDown">Welcome to <span>Restaurant</span></h2>
-                <p class="animate__animated animate__fadeInUp">식당 설명</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 3 -->
-          <div class="carousel-item" style="background-image: url(https://www.oakwoodpremier.co.kr/front2//assets/img-pc/opcc/dining-bar/oak-restaurant/oak_r_15.jpg)">
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Restaurant</span></h2>
-                <p class="animate__animated animate__fadeInUp">식당 설명</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
-          <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
-        </a>
-
-      </div>
-    </div>
-  </section><!-- 사진 부분 끝 -->
-
   <main id="main">
-    <!-- ======= 예약이랑 예약 조회 버튼 ======= -->
-    <section id="featured" class="featured">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+        <h2>예약하기 (테이블 선택)</h2>
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
       <div class="container">
           <div class="row">
-            <div class="col-lg-4">
-              <div class="icon-box" type="button"> <!--예약 페이지 이동-->
-                <i class="bi bi-card-checklist"></i>
-                <h2><a th:href="@{/reservations/date}">예약하기</a></h2>
-                <p>신규 예약을 하시려면 여기를 클릭해주세요.</p>
-              </div>
-            </div>
-            <div class="col-lg-4 mt-4 mt-lg-0">
-              <div class="icon-box" type="button"> <!--예약 조회 페이지 이동-->
-                <i class="bi bi-binoculars"></i>
-                <h2>예약조회</h2>
-                <p>기존의 예약을 확인하거나 수정을 원하시면 여기를 클릭해주세요.</p>
-              </div>
-            </div>
-          </div>
-      </div>
-    </section><!-- 버튼 끝 -->
+              <div class="col-lg-6">
+                  <form method="post" role="form" class="php-email-form">
+                      <div class="row">
+                                <aside>
+                                    <div class="form-group mt-3">
+                                        <label for="TS">테이블 선택</label> <br>
+                                        <select th:each="table : ${tables}" name="Table" onchange="handleOnChange(this)">
+                                          <option th:value="${table.number}" th:text="${table.number} + '번 테이블'" value=1>1번 테이블</option>
+                                        </select>
+                                        <p></p>
+                                        <h5>좌석 배치도</h5>
+                                        <table class="showcase">
+                                            <tr>
+                                                <td><div id="SeatSelected"></div></td>
+                                                <td><small>선택 불가</small></td>
+                                                <td><div id="Seat"></div></td>
+                                                <td><small>선택 가능</small></td>
+                                            </tr>
+                                        </table>
+                                        <table border="1" width="400" height="300"> 
+                                            <tr> 
+                                                <td id="s1" width="100" style="background-color:red;" align="center">1</td> <td id="s2"width="100" style=background-color:rgb(91,214,91); align="center">2</td> <td id="s3" style=background-color:rgb(91,214,91); width="100" align="center">3</td> <td id="s4" style=background-color:rgb(91,214,91); widht="100" align="center">4</td> 
+                                            </tr> 
+                                            <tr> 
+                                                <td id="s5" width="100" style=background-color:rgb(91,214,91); align="center">5</td> <td id="s6" width="100" style=background-color:rgb(91,214,91); align="center">6</td> <td id="s7" width="100" style=background-color:rgb(91,214,91); align="center">7</td> <td id="s8" width="100" style=background-color:rgb(91,214,91); align="center">8</td>
+                                            </tr> 
+                                        </table> 
+                                        <br>
+                                        <br>
+                                        <input width="100" class="btn btn-primary" type="submit" value="예약(제출)">    
+                                    </div>
+                                </aside>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>   
+        </section> 
+        <!-- End Contact Section -->
+
   </main><!-- End #main -->
 
-  <!-- ======= 맨 밑 부분 ======= -->
+  <!-- ======= Footer ======= -->
   <footer id="footer">
 
     <div class="footer-top">
@@ -148,7 +144,7 @@
             <p>
               경기도 수원시 <br>
               영통구 광교산로<br>
-              154-42 <br><br>
+              152-42 <br><br>
               <strong>Tel:</strong> +82 031-123-4567<br>
               <strong>Email:</strong> restaurant@example.com<br>
             </p>
@@ -162,7 +158,6 @@
               <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
               <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
             </div>
           </div>
 
@@ -182,7 +177,7 @@
         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
-  </footer><!-- 맨 밑 부분 끝 -->
+  </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
@@ -197,6 +192,7 @@
 
   <!-- Template Main JS File -->
   <script src="/assets/js/main.js"></script>
+
 
 </body>
 
