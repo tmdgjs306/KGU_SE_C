@@ -197,55 +197,27 @@
 
       <div class="table-responsive custom-table-responsive">
 
-         <script language="javascript" type="text/javascript">
-          
-          
-          function init(){
-            
-            //이전 페이지에서 날짜정보를 전달받음
-            //그 정보를 기반으로 데이터베이스에서 테이블을 가져옴
-            
-          }
-          
-          function a(event, k){//버튼 눌렸을 때 동작
-            
-            event.id = "btnLine" + k;
-            
-            alert(event.id);
-            //버튼이 눌렸을 때 k번째 라인이므로 k번째 라인에 대해 데이터베이스 수정.
-          }
-      
-        document.write("<table class='table custom-table' border='1' width='100%'>");
-        for (var i =1 ; i<=6 ;i++ )
-        {
-          //열 이름
-            document.write("<th bgcolor ='red' style='text-align:center'>"+ (i)+" </th>");
-        }
-        document.write("</th>");
-       
-        //내용
-        for (var i=1;i<=9 ;i++ ) //행
-        {
-            document.write("<tr align ='center'>");
-            for (var j = 1;j<=5 ;j++ ) //열
-            {
-                document.write("<td> " + "내용" +"</td>");// i행의, j열의 요소
-            }
-            
-                
-            
-            
-                var cancelBtn = "input class = 'testbtn' type = button value = '예약 취소' id = 0 onclick = 'a(this, " + i +")'/";
-                var changeBtn = "input class = 'testbtn' type = button value = '테이블 변경' id = 0 onclick = 'a(this," + i +")'/";
-          
-                document.write("<td> " + "<" + cancelBtn + "/>" + "&nbsp;" + "<" + changeBtn + "/>" + "</td>");
-          
-          
-          
-            document.write("</tr>");
-        }
-        document.write("</table>");
-    </script>
+		<table class='table custom-table' border='1' width='100%'>
+			<th bgcolor ='red' style='text-align:center'>1</th>
+			<th bgcolor ='red' style='text-align:center'>2</th>
+			<th bgcolor ='red' style='text-align:center'>3</th>
+			<th bgcolor ='red' style='text-align:center'>4</th>
+			<th bgcolor ='red' style='text-align:center'>5</th>
+			<th bgcolor ='red' style='text-align:center'>6</th>
+			</th>
+			
+			<tr align ='center'>
+			<td>내용1</td>
+			<td>내용2</td>
+			<td>내용3</td>
+			<td>내용4</td>
+			<td>내용5</td>
+			
+			<td><input class = 'testbtn' type = button value = '예약 취소' id = 0 onclick = 'a(this, " + i +")'/>&nbsp;
+			<input class = 'testbtn' type = button value = '테이블 변경' id = 0 onclick = 'a(this," + i +")'/></td>
+			</tr>
+			</table>
+
       </div>
 
 
