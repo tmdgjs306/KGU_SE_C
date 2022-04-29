@@ -2,19 +2,22 @@ package cteam.booksys.web.booking;
 
 import cteam.booksys.domain.restaurant.RestaurantService;
 import cteam.booksys.domain.table.Tables;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
+@Slf4j
 public class ReservationController {
 
     private final RestaurantService rs;
@@ -29,8 +32,31 @@ public class ReservationController {
     public String reservationsTableForm(@ModelAttribute("dateForm") DateForm dateForm, Model model) {
 
         List<Tables> ableTables = rs.findAbleTables(dateForm.getDate(), dateForm.getTime());
+        List<Able> ables = new ArrayList<>();
+
+        boolean flag = false;
+        for (Long i = 1L; i <= 8L; i++) {
+            for (Tables table : ableTables) {
+                if (table.getNumber().equals(i)) {
+                    flag = true;
+                    break;
+                }
+            }
+            if (flag) ables.add(new Able(true));
+            else ables.add(new Able(false));
+        }
+
+        ables.forEach(a -> log.info("{}", a.isAble()));
+
         model.addAttribute("tables", ableTables);
+        model.addAttribute("ables", ables);
 
         return "Table";
     }
+
+    @Data @AllArgsConstructor
+    static class Able {
+        private boolean isAble;
+    }
+
 }
