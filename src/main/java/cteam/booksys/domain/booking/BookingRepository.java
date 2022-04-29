@@ -33,6 +33,11 @@ public class BookingRepository {
                 .getResultList();
     }
 
+    public List<Reservation> getAllReservations2() {
+        return em.createQuery("select r from Reservation r join fetch r.tables join fetch r.customer", Reservation.class)
+                .getResultList();
+    }
+
     public List<Reservation> getAllReservationsByCustomer(LocalDate date, Long customerId) {
         String query = "select r from Reservation r join fetch r.tables join fetch r.customer " +
                 "where r.date = :date and r.customer.id = :customerId";

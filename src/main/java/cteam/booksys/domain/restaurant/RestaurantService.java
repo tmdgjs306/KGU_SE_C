@@ -51,6 +51,10 @@ public class RestaurantService {
         return br.getAllReservations(date);
     }
 
+    public List<Reservation> getAllReservations() {
+        return br.getAllReservations2();
+    }
+
     public List<Reservation> getReservationsByCustomer(LocalDate date, Long customerId) {
         return br.getAllReservationsByCustomer(date, customerId);
     }

@@ -91,12 +91,12 @@
       <div class="container">
           <div class="row">
               <div class="col-lg-6">
-                  <form method="post" role="form" class="php-email-form">
+                  <form th:action="@{/reservations/new/(date=${dateForm.date}, time=${dateForm.time})}" method="post" role="form">
                       <div class="row">
                                 <aside>
                                     <div class="form-group mt-3">
                                         <label for="TS">테이블 선택</label> <br>
-                                        <select th:each="table : ${tables}" name="Table" onchange="handleOnChange(this)">
+                                        <select th:each="table : ${tables}" th:name="tableNumber" name="Table" onchange="handleOnChange(this)">
                                           <option th:value="${table.number}" th:text="${table.number} + '번 테이블'" value=1>1번 테이블</option>
                                         </select>
                                         <p></p>

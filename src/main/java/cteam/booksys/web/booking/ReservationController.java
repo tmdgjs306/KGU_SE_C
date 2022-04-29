@@ -1,6 +1,10 @@
 package cteam.booksys.web.booking;
 
+import cteam.booksys.domain.booking.Reservation;
+import cteam.booksys.domain.customer.Customer;
+import cteam.booksys.domain.customer.CustomerService;
 import cteam.booksys.domain.restaurant.RestaurantService;
+import cteam.booksys.domain.table.TableRepository;
 import cteam.booksys.domain.table.Tables;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +15,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +28,8 @@ import java.util.List;
 public class ReservationController {
 
     private final RestaurantService rs;
+    private final CustomerService cs;
+    private final TableRepository tr;
 
     @GetMapping("/reservations/date")
     public String reservationDateForm(@ModelAttribute("dateForm") DateForm dateForm) {
@@ -48,15 +57,47 @@ public class ReservationController {
 
         ables.forEach(a -> log.info("{}", a.isAble()));
 
+        model.addAttribute("dateForm", dateForm);
         model.addAttribute("tables", ableTables);
         model.addAttribute("ables", ables);
 
         return "Table";
     }
 
-    @Data @AllArgsConstructor
+    @Data
+    @AllArgsConstructor
     static class Able {
-        private boolean isAble;
+        private boolean able;
     }
 
+    @PostMapping("/reservations/new/form")
+    public String reservationInputForm(@ModelAttribute("tableNumber") Long tableNumber,
+                                       @ModelAttribute("dateForm") DateForm dateForm,
+                                       @ModelAttribute("rForm") ReservationForm rForm) {
+
+        return "p1";
+    }
+
+    @PostMapping("/reservations/new")
+    public String reservationSubmit(@RequestParam Long tableNumber,
+                                    @ModelAttribute DateForm dateForm,
+                                    @ModelAttribute("rForm") ReservationForm rForm) {
+        //todo Validation
+        //todo 로그인 구현하면 수정
+        Customer customer = cs.createCustomer(rForm.getName(), rForm.getPhoneNumber());
+        //todo TableCoverCheck Validation
+        rs.createReservation(rForm.getCovers(), dateForm.getDate(), dateForm.getTime(), tableNumber, customer.getId());
+
+        return "redirect:/reservations";
+    }
+
+    @GetMapping("/reservations")
+    public String reservationList(Model model) {
+        //todo 로그인 구현하면 수정
+        List<Reservation> reservations = rs.getAllReservations();
+
+        model.addAttribute("bookings", reservations);
+
+        return "p2";
+    }
 }

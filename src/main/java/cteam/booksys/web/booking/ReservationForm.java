@@ -14,11 +14,5 @@ public class ReservationForm {
 
     private String phoneNumber;
 
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
-    private LocalDate date;
-
-    @DateTimeFormat(pattern = "hh:mm")
-    private LocalTime time;
-
     private int covers;
 }
