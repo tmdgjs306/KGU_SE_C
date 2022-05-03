@@ -15,7 +15,7 @@
     width: 10px; height: 10px;
     background-color: rgb(91,214,91);
   }
-  #table {
+  .tables {
     width: 50px;
     height: 50px;
   }
@@ -109,10 +109,10 @@
                                                 <td><small>선택 가능</small></td>
                                             </tr>
                                         </table>
-                                        <table  border="1" width="400" height="300">
+                                        <table  border="1" width="400" height="100">
                                             <tr th:each="able, ableStat: ${ables}">
-                                                <td th:if="${!able.able}" th:text="${ableStat.count}" width="100" style="background-color:red;" align="center">1</td>
-                                                <td th:if="${able.able}" th:text="${ableStat.count}" width="100" style=background-color:rgb(91,214,91); align="center">1</td>
+                                                <td class="tables" th:if="${!able.able}" th:text="${ableStat.count} + '번 테이블'" style="background-color:red; color:white; border-color: white" align="center">1</td>
+                                                <td class="tables" th:if="${able.able}" th:text="${ableStat.count} + '번 테이블'" width="50" style="background-color:rgb(91,214,91); border-color: black"  align="center">1</td>
                                             </tr> 
                                         </table> 
                                         <br>

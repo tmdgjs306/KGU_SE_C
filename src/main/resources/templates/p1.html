@@ -99,6 +99,12 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+    .field-error {
+      border-color: #dc3545;
+      color: #dc3545;
+    }
+  </style>
 </head>
 
 <body>
@@ -167,8 +173,11 @@
               <form th:action="@{/reservations/new(date=${dateForm.date}, time=${dateForm.time}, tableNumber=${tableNumber})}" th:object="${rForm}" method="post">
               <div class="entry-content">
                 <input th:field="*{name}" type="text" id="name" placeHolder="이름">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input th:field="*{phoneNumber}" type="text" name="cellPhone" id="cellPhone" placeholder="핸드폰번호 ( - 없이 입력)" maxlength="13" onkeyup="up()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input th:field="*{covers}" type="text" id="count" placeHolder="예약 인원수" onkeyup="countUp();"><div></div>
+                <input th:field="*{phoneNumber}" type="text" name="cellPhone" id="cellPhone" placeholder="핸드폰번호 ( - 없이 입력)" maxlength="13" onkeyup="up()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input th:field="*{covers}" type="text" id="count" placeHolder="예약 인원수" onkeyup="countUp();"><div></div>
+                <div th:if="${#fields.hasGlobalErrors()}">
+                  <p class="field-error" th:each="err : ${#fields.globalErrors()}" th:text="${err}"></p>
+                </div>
                 <div class="read-more">
                   <button type="submit" class="btn btn-primary">제출</button>
                 </div>

@@ -36,6 +36,10 @@ public class RestaurantService {
         br.saveReservation(reservation);
     }
 
+    public Tables getTable(Long tableNumber) {
+        return tr.getTable(tableNumber);
+    }
+
     public void createWalkIn(Integer covers, LocalDate date, LocalTime time, Long tno) {
         Tables table = tr.getTable(tno);
         WalkIn walkIn = WalkIn.createWalkIn(covers, date, time, table);
@@ -79,7 +83,7 @@ public class RestaurantService {
         List<Reservation> reservations = br.getAllReservations(date);
         List<Reservation> unAbleReservations = reservations.stream()
                 .filter(r -> ((time.isAfter(r.getTime()) && time.isBefore(r.getEndTime())) ||
-                        r.getTime().isAfter(time) && r.getTime().isBefore(time.plusHours(2))))
+                        (r.getTime().isAfter(time) && r.getTime().isBefore(time.plusHours(2)))))
                 .collect(Collectors.toList());
         List<Tables> tables = tr.getAllTables();
         tables.removeIf(t -> {

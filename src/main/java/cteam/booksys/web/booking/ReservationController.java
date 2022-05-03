@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -58,13 +59,20 @@ public class ReservationController {
     }
 
     @PostMapping("/reservations/new")
-    public String reservationSubmit(@RequestParam Long tableNumber,
-                                    @ModelAttribute DateForm dateForm,
-                                    @ModelAttribute("rForm") ReservationForm rForm) {
+    public String reservationSubmit(@ModelAttribute("tableNumber") Long tableNumber,
+                                    @ModelAttribute("dateForm") DateForm dateForm,
+                                    @ModelAttribute("rForm") ReservationForm rForm,
+                                    BindingResult bindingResult) {
         //todo Validation
         //todo 로그인 구현하면 수정
-        Customer customer = cs.createCustomer(rForm.getName(), rForm.getPhoneNumber());
         //todo TableCoverCheck Validation
+        Tables table = rs.getTable(tableNumber);
+        if (table.getPlaces() < rForm.getCovers()) {
+            bindingResult.reject("OverCover", "테이블의 최대 인원수 보다 예약인원이 더 많습니다.");
+            return "p1";
+        }
+
+        Customer customer = cs.createCustomer(rForm.getName(), rForm.getPhoneNumber());
         rs.createReservation(rForm.getCovers(), dateForm.getDate(), dateForm.getTime(), tableNumber, customer.getId());
 
         return "redirect:/reservations";
@@ -121,8 +129,8 @@ public class ReservationController {
     private List<Able> getAbleList(List<Tables> ableTables) {
         List<Able> ables = new ArrayList<>();
 
-        boolean flag = false;
         for (Long i = 1L; i <= 8L; i++) {
+            boolean flag = false;
             for (Tables table : ableTables) {
                 if (table.getNumber().equals(i)) {
                     flag = true;
