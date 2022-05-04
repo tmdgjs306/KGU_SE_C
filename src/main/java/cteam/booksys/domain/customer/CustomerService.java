@@ -11,8 +11,8 @@ public class CustomerService {
     private final CustomerRepository cr;
 
     @Transactional
-    public Customer createCustomer(String name, String phoneNumber) {
-        Customer customer = new Customer(name, phoneNumber);
+    public Customer createCustomer(String name, String phoneNumber, String loginId, String pw) {
+        Customer customer = new Customer(name, phoneNumber, loginId, pw);
         cr.createCustomer(customer);
         return customer;
     }

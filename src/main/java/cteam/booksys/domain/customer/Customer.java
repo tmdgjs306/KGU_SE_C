@@ -18,9 +18,15 @@ public class Customer {
 
     private String phoneNumber;
 
-    public Customer(String name, String phoneNumber) {
+    private String loginId;
+
+    private String pw;
+
+    public Customer(String name, String phoneNumber, String loginId, String pw) {
         this.name = name;
         this.phoneNumber = phoneNumber;
+        this.loginId = loginId;
+        this.pw = pw;
     }
 
     protected Customer() {
