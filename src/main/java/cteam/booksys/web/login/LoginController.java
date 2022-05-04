@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @RequiredArgsConstructor
-public class loginController {
+public class LoginController {
 
     private final LoginSerivce loginSerivce;
 
@@ -27,7 +27,7 @@ public class loginController {
     }
 
     @PostMapping("/login")
-    public String login(@Validated @ModelAttribute loginForm loginForm, BindingResult bindingResult,
+    public String login(@Validated @ModelAttribute("loginForm") loginForm loginForm, BindingResult bindingResult,
                         HttpServletRequest request) {
 
         if (bindingResult.hasErrors()) {
