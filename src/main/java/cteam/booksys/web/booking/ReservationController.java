@@ -63,9 +63,7 @@ public class ReservationController {
                                     @ModelAttribute("dateForm") DateForm dateForm,
                                     @ModelAttribute("rForm") ReservationForm rForm,
                                     BindingResult bindingResult) {
-        //todo Validation
         //todo 로그인 구현하면 수정
-        //todo TableCoverCheck Validation
         Tables table = rs.getTable(tableNumber);
         if (table.getPlaces() < rForm.getCovers()) {
             bindingResult.reject("OverCover", "테이블의 최대 인원수 보다 예약인원이 더 많습니다.");
