@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 public class HomeController {
 
     @GetMapping("/")
-    public String home(@SessionAttribute(name = LoginConst.LOGIN_CUSTOMER, required = false) Long customerId) {
+    public String home(@SessionAttribute(value = LoginConst.LOGIN_CUSTOMER, required = false) Long customerId) {
         if (customerId == null) {
             return "start";
         }

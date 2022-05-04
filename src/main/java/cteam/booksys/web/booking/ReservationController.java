@@ -1,5 +1,6 @@
 package cteam.booksys.web.booking;
 
+import cteam.booksys.LoginConst;
 import cteam.booksys.domain.booking.Reservation;
 import cteam.booksys.domain.customer.Customer;
 import cteam.booksys.domain.customer.CustomerService;
@@ -53,7 +54,11 @@ public class ReservationController {
     @PostMapping("/reservations/new/form")
     public String reservationInputForm(@ModelAttribute("tableNumber") Long tableNumber,
                                        @ModelAttribute("dateForm") DateForm dateForm,
-                                       @ModelAttribute("rForm") ReservationForm rForm) {
+                                       @ModelAttribute("rForm") ReservationForm rForm,
+                                       @SessionAttribute(value = LoginConst.LOGIN_CUSTOMER, required = false) Long customerId) {
+        Customer customer = cs.getCustomerById(customerId);
+        rForm.setName(customer.getName());
+        rForm.setPhoneNumber(customer.getPhoneNumber());
 
         return "p1";
     }
@@ -62,26 +67,24 @@ public class ReservationController {
     public String reservationSubmit(@ModelAttribute("tableNumber") Long tableNumber,
                                     @ModelAttribute("dateForm") DateForm dateForm,
                                     @ModelAttribute("rForm") ReservationForm rForm,
+                                    @SessionAttribute(value = LoginConst.LOGIN_CUSTOMER, required = false) Long customerId,
                                     BindingResult bindingResult) {
-        //todo Validation
         //todo 로그인 구현하면 수정
-        //todo TableCoverCheck Validation
         Tables table = rs.getTable(tableNumber);
         if (table.getPlaces() < rForm.getCovers()) {
             bindingResult.reject("OverCover", "테이블의 최대 인원수 보다 예약인원이 더 많습니다.");
             return "p1";
         }
 
-        Customer customer = cs.createCustomer(rForm.getName(), rForm.getPhoneNumber());
-        rs.createReservation(rForm.getCovers(), dateForm.getDate(), dateForm.getTime(), tableNumber, customer.getId());
+        rs.createReservation(rForm.getCovers(), dateForm.getDate(), dateForm.getTime(), tableNumber, customerId);
 
         return "redirect:/reservations";
     }
 
     @GetMapping("/reservations")
-    public String reservationList(Model model) {
-        //todo 로그인 구현하면 수정
-        List<Reservation> reservations = rs.getAllReservations();
+    public String reservationList(@SessionAttribute(value = LoginConst.LOGIN_CUSTOMER, required = false) Long customerId,
+                                  Model model) {
+        List<Reservation> reservations = rs.getReservationsByCustomer(customerId);
 
         model.addAttribute("bookings", reservations);
 
