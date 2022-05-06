@@ -70,8 +70,8 @@ public class RestaurantService {
         return br.getAllReservations2();
     }
 
-    public List<Reservation> getReservationsByCustomer(LocalDate date, Long customerId) {
-        return br.getAllReservationsByCustomer(date, customerId);
+    public List<Reservation> getReservationsByCustomer(Long customerId) {
+        return br.getAllReservationsByCustomer(customerId);
     }
 
     public List<Tables> findAbleTables(LocalDate date, LocalTime time) {
