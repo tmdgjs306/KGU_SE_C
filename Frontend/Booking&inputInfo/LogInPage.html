@@ -5,98 +5,49 @@
   <meta charset="utf-8">
   <meta content="width= 5000, initial-scale=1.0" name="viewport">
   
+	<style>
+		.testbtn{
+              
+			position: relative;
+			top: -30px;
+			left: 505px;
+			border: 1px solid skyblue;
+			background-color: rgba(0,0,0,0);
+			color: skyblue;
+			padding: 5px;
+			font-size : 20px;
+		}
   
-  <style>
-  .testbtn{
-  	border: 1px solid skyblue;
-  	background-color: rgba(0,0,0,0);
-  	color: skyblue;
-  	padding: 5px;
-  }
+		.testbtn:hover{
+		  	color:white;
+		  	background-color:skyblue;
+		}
   
-  .testbtn:hover{
-  	color:white;
-  	background-color:skyblue;
-  }
-  
-  
-  </style>
-  
-      <script>
-      
-      
-      
-      function submit(){
-        
-        
-        let name = document.getElementById("name").value;
-        let phoneNumber = document.getElementById("cellPhone").value;
-        let count = document.getElementById("count").value;
+		.join {
+			position: relative;
+			left: 385px;
+			text-decoration: none;
+			font-size : 13px;
+			color: black; 
+		}
 
-        alert(name + phoneNumber + count);
-        
-        location.href='p2.html';
-        
-      }
-      
-      function autoHypenPhone(str){
-            str = str.replace(/[^0-9]/g, '');
-            var tmp = '';
-            if( str.length < 4){
-                return str;
-            }else if(str.length < 7){
-                tmp += str.substr(0, 3);
-                tmp += '-';
-                tmp += str.substr(3);
-                return tmp;
-            }else if(str.length < 11){
-                tmp += str.substr(0, 3);
-                tmp += '-';
-                tmp += str.substr(3, 3);
-                tmp += '-';
-                tmp += str.substr(6);
-                return tmp;
-            }else{              
-                tmp += str.substr(0, 3);
-                tmp += '-';
-                tmp += str.substr(3, 4);
-                tmp += '-';
-                tmp += str.substr(7);
-                return tmp;
-            }
-            return str;
-        }
-      
-      function autoCount(str){
-           str = str.replace(/[^0-9]/g, '');
-           return str;
-      }
+	</style>
+	
+	<script>
+	
+	function login(){
+		alert("로그인 확인");
+	}
+	
+	</script>
+  
 
 
-      
-      function up(){
-                  var _val = document.getElementById('cellPhone').value;
-                  document.getElementById('cellPhone').value = autoHypenPhone(_val) ;
-      }
-      
-      function countUp(){
-        
-                  var _val = document.getElementById('count').value;
-                  document.getElementById('count').value = autoCount(_val) ;
-        
-      }
-      
-
-      
-    </script>
-
-  <title>레스토랑 정보입력</title>
+  <title>레스토랑 로그인 페이지</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-    <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <!-- Favicons -->
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -118,6 +69,11 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  
+  <style>
+  
+  </style>
+  
 </head>
 
 <body>
@@ -163,79 +119,51 @@
       <div class="container">
 
         
-        <h2>예약 테이블 조회 결과 [전달받은 날짜 표기]</h2>
+        <h2>회원 로그인</h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
 
     <!-- ======= Blog Section ======= -->
     <section id="blog" class="blog">
-      <div class="container" data-aos="fade-up" style="width: 956px;">
+      <div class="container" data-aos="fade-up" style="width: 956px; height: 213px; ">
 
         
 
           
 
-            <!-- End blog entry -->
-
-            
-
-              <div class="entry-img">
-              </div>
-
-              <article class="entry">
+            <article class="entry">
 
               <div class="entry-img">
               </div>
 
               <h2 class="entry-title">
-                현재 예약 리스트
+                
               </h2>
+              
+
 
               <div class="entry-meta">
                 
               </div>
 
               <div class="entry-content">
-                <div class="content">
-    
-    
-    
-    <div class="container">
-
-      <div class="table-responsive custom-table-responsive">
-
-		<table class='table custom-table' border='1' width='100%'>
-			<th bgcolor ='red' style='text-align:center'>1</th>
-			<th bgcolor ='red' style='text-align:center'>2</th>
-			<th bgcolor ='red' style='text-align:center'>3</th>
-			<th bgcolor ='red' style='text-align:center'>4</th>
-			<th bgcolor ='red' style='text-align:center'>5</th>
-			<th bgcolor ='red' style='text-align:center'>6</th>
-			</th>
-			
-			<tr align ='center'>
-			<td>내용1</td>
-			<td>내용2</td>
-			<td>내용3</td>
-			<td>내용4</td>
-			<td>내용5</td>
-			
-			<td><input class = 'testbtn' type = submit value = '예약 취소' id = 0 onclick = 'a(this, " + i +")'/>&nbsp;
-			<input class = 'testbtn' type = submit value = '테이블 변경' id = 0 onclick = 'a(this," + i +")'/></td>
-			</tr>
-			</table>
-
-      </div>
-
-
-    </div>
-
-  </div>
-                </div>
+              <div style="height: 25px;">  </div>
+                <input style ="margin: 0px 0px 0px 300px;" class = 'd' type="text" id="ID" placeHolder="아이디"></input>
+              <div style="height: 10px; width: 491px; margin: 0px 0px 0px 0px;">  <input type="submit" class="testbtn" value="로그인" style="width: 112px; height: 72px; " onclick = "login()" ></div>
+                <input type = "password" style ="margin: 0px 0px 0px 300px;"  type="text" id="PW" placeholder="비밀번호"><div></div>
+                <a class = "join" href = "https://www.naver.com/">회원이 아니십니까?</a>
+                  
               </div>
 
-            </article><h2 class="entry-title">
+            </article><!-- End blog entry -->
+
+            
+
+              <div class="entry-img">
+              </div>
+
+              <h2 class="entry-title">
                 </h2>
 
         </div>
@@ -273,14 +201,6 @@
               <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
             </div>
           </div>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
 
         </div>
       </div>
