@@ -123,7 +123,13 @@
   <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
+        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:restaurant@example.com">restaurant@example.com</a></i>
+        <i class="bi bi-phone d-flex align-items-center ms-4"><span>+82 031-123-4567</span></i>
       </div>
+      <div class="social-links d-none d-md-flex align-items-center">
+        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
       </div>
     </div>
   </section>
@@ -213,8 +219,8 @@
 			<td>내용4</td>
 			<td>내용5</td>
 			
-			<td><input class = 'testbtn' type = button value = '예약 취소' id = 0 onclick = 'a(this, " + i +")'/>&nbsp;
-			<input class = 'testbtn' type = button value = '테이블 변경' id = 0 onclick = 'a(this," + i +")'/></td>
+			<td><input class = 'testbtn' type = submit value = '예약 취소' id = 0 onclick = 'a(this, " + i +")'/>&nbsp;
+			<input class = 'testbtn' type = submit value = '테이블 변경' id = 0 onclick = 'a(this," + i +")'/></td>
 			</tr>
 			</table>
 
@@ -240,16 +246,33 @@
   <!-- ======= Footer ======= -->
   <footer id="footer">
 
-    <div class="footer-newsletter">
-    
+    <div class="footer-top">
       <div class="container">
-        
-          <div class="col-lg-6">
-            <h4>연락처 : xxx-xxxx <br><br>주소 : 어디어디 </h4>
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h4>주소</h4>
+            <p>
+              경기도 수원시 <br>
+              영통구 광교산로<br>
+              152-42 <br><br>
+              <strong>Tel:</strong> +82 031-123-4567<br>
+              <strong>Email:</strong> restaurant@example.com<br>
+            </p>
+
           </div>
-          
-          
-          
+
+          <div class="col-lg-3 col-md-6 footer-info">
+            <h3>About Restaurant</h3>
+            <p>간단한 소개</p>
+            <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
 
