@@ -92,6 +92,7 @@ public class RestaurantService {
             }
             return false;
         });
+
         log.info("ablesTable size = {}", tables.size());
         return tables;
     }
