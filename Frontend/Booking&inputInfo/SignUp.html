@@ -41,6 +41,11 @@
 
 	</style>
 	
+  <script>
+    function Message() {
+      alert('중복된 아이디 입니다.');
+    }
+  </script>
 	
   
 
@@ -156,7 +161,7 @@
                 <input style ="margin: 0px 0px 0px 300px;"  type="text" id="Phone" placeholder="전화번호" required><div></div>
                 <p></p>
                 <input style ="margin: 0px 0px 0px 300px;" class = 'd' type="text" id="Id" placeHolder="아이디" required></input>
-                <div style="height: 9px; width: 450px; margin: 0px 0px 0px 0px;">  <input type="submit" class="test" value="중복확인" style="width: 50px; height: 29px; "></div>
+                <div style="height: 9px; width: 450px; margin: 0px 0px 0px 0px;">  <input type="submit" class="test" value="중복확인" style="width: 50px; height: 29px; " onclick="Message()"></div>
                 <p></p>
                 <input style ="margin: 0px 0px 0px 300px;" class = 'd' type="text" id="PassWord" placeHolder="비밀번호" required></input>
                 <div style="height: 9px; width: 450px; margin: 0px 0px 0px 0px"><input type="submit" class="okay" value="확인(제출)" style="width: 80px; height: 29px; "></div>
