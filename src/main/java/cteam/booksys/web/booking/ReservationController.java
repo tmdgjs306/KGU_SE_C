@@ -125,7 +125,6 @@ public class ReservationController {
     @Data
     @AllArgsConstructor
     static class Able {
-
         private boolean able;
     }
 
