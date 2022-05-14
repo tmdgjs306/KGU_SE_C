@@ -1,37 +1,60 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="width= 5000, initial-scale=1.0" name="viewport">
+  
+	<style>
+		.test{
+              
+			position: relative;
+			top: -30px;
+			left: 505px;
+			border: 1px solid skyblue;
+			background-color: rgb(179, 234, 255);
+			color: black;
+			padding: 3px;
+			font-size : 10px;
+		}
+  
+  	.test:hover{
+		  	color:white;
+		  	background-color:skyblue;
+		}	
 
-  <title>예약하기1</title>
-  <style>
-  #SeatSelected {
-    width: 10px; height: 10px;
-    background-color: rgb(210, 45, 45);
-  }
-  #Seat {
-    width: 10px; height: 10px;
-    background-color: rgb(91,214,91);
-  }
-  #table {
-    width: 50px;
-    height: 50px;
-  }
+    .okay {
+      position: relative;
+      top: 0px;
+      left: 650px;
+      border: 1px solid skyblue;
+      background-color: rgb(179, 234, 255);
+      color: black;
+      padding: 3px;
+      font-size : 15px;
+    }
 
-  </style>
+    .okay:hover{
+		  	color:white;
+		  	background-color:skyblue;
+		}	
 
+	</style>
+	
+  <script>
+    function Message() {
+      alert('중복된 아이디 입니다.');
+    }
+  </script>
+	
+  
+
+
+  <title>회원가입</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-  <!--jquery-->
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  
+
   <!-- Favicons -->
-  <link href="/assets/img/favicon.png" rel="icon">
-  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -46,10 +69,21 @@
 
   <!-- Template Main CSS File -->
   <link href="/assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Eterna - v4.7.1
+  * Template URL: https://bootstrapmade.com/eterna-free-multipurpose-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  
+  <style>
+  
+  </style>
+  
 </head>
 
 <body>
-
   <!-- ======= Top Bar ======= -->
   <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
@@ -70,10 +104,18 @@
     <div class="container d-flex justify-content-between align-items-center">
 
       <div class="logo">
-        <h1><a th:href="@{/}" href="index.html">소공소공 레스토랑</a></h1>
+        <h1><a href="index.html">소공소공 레스토랑</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="/assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
     </div>
   </header><!-- End Header -->
 
@@ -82,35 +124,46 @@
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
-        <h2>예약하기 (날짜, 시간)</h2>
+
+        
+        <h2>회원가입</h2>
+
       </div>
     </section><!-- End Breadcrumbs -->
 
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container">
-          <div class="row">
-              <div class="col-lg-6">
+    <!-- ======= Blog Section ======= -->
+    <section id="blog" class="blog">
+      <form th:action th:method="post" th:object="${joinForm}">
+      <div class="container" data-aos="fade-up" style="width: 956px; height: 213px; ">
+            <article class="entry">
+              <div class="entry-img">
               </div>
-          </div>
-          <div class="row">
-            <form th:action="@{/reservations/table}" method="post">
-            <div class="col-md-6 form-group">
-              <label for="datepicker">날짜</label>
-                <input th:field="${dateForm.date}" type="text" name="date" style="width:300px;height:50px;font-size:20px;" class="form-control" id="datepicker" required>
+              <h2 class="entry-title">
+              </h2>
+              <div class="entry-meta">
               </div>
-              <div class="form-group mt-3">
-                <label for="timepicker">시간</label>
-                  <input th:field="${dateForm.time}" type="time" id="timepicker" style="width: 200px; height: 50px; font-size:20px;"
-                         class="form-control" name="time" required/>
-                <p size="5px"></p>
+              <div class="entry-content">
+              <div style="height: 3px;">  </div>
+                <input th:field="*{name}" style ="margin: 0px 0px 0px 300px;" class = 'd' type="text" id="NAME" placeHolder="이름" required>
+                <p></p>
+                <input th:field="*{phoneNumber}" style ="margin: 0px 0px 0px 300px;"  type="text" id="Phone" placeholder="전화번호" required><div></div>
+                <p></p>
+                <input th:field="*{loginId}" style ="margin: 0px 0px 0px 300px;" class = 'd' type="text" id="Id" placeHolder="아이디" required>
+                <div style="height: 9px; width: 450px; margin: 0px 0px 0px 0px;">  <input type="submit" class="test" value="중복확인" style="width: 50px; height: 29px; " onclick="Message()"></div>
+                <p></p>
+                <input th:field="*{pw}" style ="margin: 0px 0px 0px 300px;" class = 'd' type="password" id="PassWord" placeHolder="비밀번호" required>
+                <button style="height: 9px; width: 450px; margin: 0px 0px 0px 0px"><input type="submit" class="okay" value="확인(제출)" style="width: 80px; height: 29px; "></button>
               </div>
-              <button type="submit" class="btn btn-primary">다음</button>
-            </form>
-            </div>
+            </article><!-- End blog entry -->
+              <div class="entry-img">
+              </div>
+              <h2 class="entry-title">
+                </h2>
+        </div>
+      </form>
+
       </div>
-        </section>
-        <!-- End Contact Section -->
+    </section><!-- End Blog Section -->
 
   </main><!-- End #main -->
 
@@ -149,7 +202,7 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Restaurant</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Eterna</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
@@ -174,35 +227,6 @@
 
   <!-- Template Main JS File -->
   <script src="/assets/js/main.js"></script>
-
-  <!-- Template DateInput -->
-  <script>
-    $(function() {
-      $("#datepicker").datepicker({
-        dateFormat: 'yy-mm-dd'
-        ,showOtherMonths: true
-        ,showMonthAfterYear:true
-        ,changeYear: true
-        ,changeMonth: true
-        ,showOn: "both"
-        ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif"
-        ,buttonImageOnly: true
-        ,buttonText: "선택"
-        ,yearSuffix: "년"
-        ,monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
-        ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
-        ,dayNamesMin: ['일','월','화','수','목','금','토']
-        ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일']
-        ,minDate: 0
-        ,maxDate: "+1Y"
-      });
-      $("#datepicker").datepicker();
-      $.datepicker.setDefaults({
-        dateFormat: 'yyyy-mm-dd'
-      });
-      $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-    });
-  </script>
 
 </body>
 

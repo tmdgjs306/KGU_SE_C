@@ -18,15 +18,11 @@ public class CustomerController {
     @GetMapping("/customers/join")
     public String joinForm(@ModelAttribute("joinForm") JoinForm joinForm) {
 
-        return "joinForm";
+        return "SignUp";
     }
 
     @PostMapping("/customers/join")
-    private String join(@Validated @ModelAttribute JoinForm joinForm, BindingResult bindingResult) {
-
-        if (bindingResult.hasErrors()) {
-            return "joinForm";
-        }
+    private String join(@ModelAttribute JoinForm joinForm, BindingResult bindingResult) {
 
         cs.createCustomer(joinForm.getName(), joinForm.getPhoneNumber(), joinForm.getLoginId(), joinForm.getPw());
 

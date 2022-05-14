@@ -23,7 +23,7 @@ public class LoginController {
     @GetMapping("/login")
     public String loginForm(@ModelAttribute loginForm loginForm) {
 
-        return "loginForm";
+        return "LoginPage";
     }
 
     @PostMapping("/login")
@@ -31,14 +31,14 @@ public class LoginController {
                         HttpServletRequest request) {
 
         if (bindingResult.hasErrors()) {
-            return "loginForm";
+            return "LoginPage";
         }
 
         Customer loginCustomer = loginSerivce.login(loginForm.getLoginId(), loginForm.getPw());
 
         if (loginCustomer == null) {
-            bindingResult.reject("아이디 혹은 패스워드가 맞지 않습니다.");
-            return "loginForm";
+            bindingResult.reject("loginFail" ,"아이디 혹은 패스워드가 맞지 않습니다.");
+            return "LoginPage";
         }
 
         HttpSession session = request.getSession(true);

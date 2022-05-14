@@ -36,6 +36,7 @@ public class CustomerRepository {
                 .setParameter("loginId", loginId)
                 .getResultList();
 
+        if (customers.isEmpty()) return Optional.empty();
         return Optional.ofNullable(customers.get(0));
     }
 }

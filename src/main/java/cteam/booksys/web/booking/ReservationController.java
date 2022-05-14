@@ -91,6 +91,15 @@ public class ReservationController {
         return "p2";
     }
 
+    @GetMapping("/reservations/all")
+    public String allReservations(Model model) {
+        List<Reservation> all = rs.getAllReservations();
+
+        model.addAttribute("bookings", all);
+
+        return "p2";
+    }
+
     @PostMapping("/reservations/{id}/cancel")
     public String cancel(@PathVariable Long id) {
         rs.removeReservation(id);

@@ -5,30 +5,10 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>예약하기1</title>
-  <style>
-  #SeatSelected {
-    width: 10px; height: 10px;
-    background-color: rgb(210, 45, 45);
-  }
-  #Seat {
-    width: 10px; height: 10px;
-    background-color: rgb(91,214,91);
-  }
-  #table {
-    width: 50px;
-    height: 50px;
-  }
-
-  </style>
-
+  <title>레스토랑 예약 시스템 메인 페이지</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-  <!--jquery-->
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  
+
   <!-- Favicons -->
   <link href="/assets/img/favicon.png" rel="icon">
   <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -46,11 +26,12 @@
 
   <!-- Template Main CSS File -->
   <link href="/assets/css/style.css" rel="stylesheet">
+
 </head>
 
 <body>
 
-  <!-- ======= Top Bar ======= -->
+  <!-- ======= 전화번호, 이메일, SNS  ======= -->
   <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
@@ -65,56 +46,104 @@
     </div>
   </section>
 
-  <!-- ======= Header ======= -->
+  <!-- ======= 상단에 레스토랑 바 ======= -->
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex justify-content-between align-items-center">
 
       <div class="logo">
-        <h1><a th:href="@{/}" href="index.html">소공소공 레스토랑</a></h1>
+        <h1><a href="Main.html">소공소공 레스토랑</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="/assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
+
+      <nav id="navbar" class="navbar">
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
     </div>
   </header><!-- End Header -->
 
-  <main id="main">
+  <!-- ======= 레스토랑 사진 ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
-        <h2>예약하기 (날짜, 시간)</h2>
+        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+          <!--레스토랑 사진은 oak hotel 사진임-->
+          <!--사진 안에 식당 설명 추가-->
+          <!-- Slide 1 -->
+          <div class="carousel-item active" style="background-image: url(https://www.oakwoodpremier.co.kr/front2//assets/img-pc/opcc/dining-bar/oak-restaurant/oak_r_01.jpg)">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Restaurant</span></h2>
+                <p class="animate__animated animate__fadeInUp">식당 설명</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="carousel-item" style="background-image: url(https://www.oakwoodpremier.co.kr/front2//assets/img-pc/opcc/dining-bar/oak-restaurant/oak_r_07.jpg)">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated fanimate__adeInDown">Welcome to <span>Restaurant</span></h2>
+                <p class="animate__animated animate__fadeInUp">식당 설명</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="carousel-item" style="background-image: url(https://www.oakwoodpremier.co.kr/front2//assets/img-pc/opcc/dining-bar/oak-restaurant/oak_r_15.jpg)">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Restaurant</span></h2>
+                <p class="animate__animated animate__fadeInUp">식당 설명</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+          <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+        </a>
+
       </div>
-    </section><!-- End Breadcrumbs -->
+    </div>
+  </section><!-- 사진 부분 끝 -->
 
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
+  <main id="main">
+    <!-- ======= 예약이랑 예약 조회 버튼 ======= -->
+    <section id="featured" class="featured">
       <div class="container">
           <div class="row">
-              <div class="col-lg-6">
+            <div class="col-lg-4">
+              <div class="icon-box" type="button"> <!--예약 페이지 이동-->
+                <i class="bi bi-card-checklist"></i>
+                <h2><a th:href="@{/reservations/date}">예약하기</a></h2>
+                <p>신규 예약을 하시려면 여기를 클릭해주세요.</p>
+              </div>
+            </div>
+            <div class="col-lg-4 mt-4 mt-lg-0">
+              <div class="icon-box" type="button"> <!--예약 조회 페이지 이동-->
+                <i class="bi bi-binoculars"></i>
+                <h2><a th:href="@{/reservations/all}">예약관리</a></h2>
+                <p>기존의 예약을 확인하거나 수정을 원하시면 여기를 클릭해주세요.</p>
+              </div>
+            </div>
+            <div class="col-lg-4 mt-4 mt-lg-0">
+                <div class="icon-box" type="button"> <!--예약 조회 페이지 이동-->
+                  <i class="bi bi-binoculars"></i>
+                  <h2><a th:href="@{/reservations}">테이블 관리</a></h2>
+                  <p>기존의 예약을 확인하거나 수정을 원하시면 여기를 클릭해주세요.</p>
+                </div>
               </div>
           </div>
-          <div class="row">
-            <form th:action="@{/reservations/table}" method="post">
-            <div class="col-md-6 form-group">
-              <label for="datepicker">날짜</label>
-                <input th:field="${dateForm.date}" type="text" name="date" style="width:300px;height:50px;font-size:20px;" class="form-control" id="datepicker" required>
-              </div>
-              <div class="form-group mt-3">
-                <label for="timepicker">시간</label>
-                  <input th:field="${dateForm.time}" type="time" id="timepicker" style="width: 200px; height: 50px; font-size:20px;"
-                         class="form-control" name="time" required/>
-                <p size="5px"></p>
-              </div>
-              <button type="submit" class="btn btn-primary">다음</button>
-            </form>
-            </div>
       </div>
-        </section>
-        <!-- End Contact Section -->
-
+    </section><!-- 버튼 끝 -->
   </main><!-- End #main -->
 
-  <!-- ======= Footer ======= -->
+  <!-- ======= 맨 밑 부분 ======= -->
   <footer id="footer">
 
     <div class="footer-top">
@@ -126,7 +155,7 @@
             <p>
               경기도 수원시 <br>
               영통구 광교산로<br>
-              152-42 <br><br>
+              154-42 <br><br>
               <strong>Tel:</strong> +82 031-123-4567<br>
               <strong>Email:</strong> restaurant@example.com<br>
             </p>
@@ -140,6 +169,7 @@
               <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
               <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
             </div>
           </div>
 
@@ -159,7 +189,7 @@
         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
-  </footer><!-- End Footer -->
+  </footer><!-- 맨 밑 부분 끝 -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
@@ -174,35 +204,6 @@
 
   <!-- Template Main JS File -->
   <script src="/assets/js/main.js"></script>
-
-  <!-- Template DateInput -->
-  <script>
-    $(function() {
-      $("#datepicker").datepicker({
-        dateFormat: 'yy-mm-dd'
-        ,showOtherMonths: true
-        ,showMonthAfterYear:true
-        ,changeYear: true
-        ,changeMonth: true
-        ,showOn: "both"
-        ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif"
-        ,buttonImageOnly: true
-        ,buttonText: "선택"
-        ,yearSuffix: "년"
-        ,monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
-        ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
-        ,dayNamesMin: ['일','월','화','수','목','금','토']
-        ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일']
-        ,minDate: 0
-        ,maxDate: "+1Y"
-      });
-      $("#datepicker").datepicker();
-      $.datepicker.setDefaults({
-        dateFormat: 'yyyy-mm-dd'
-      });
-      $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-    });
-  </script>
 
 </body>
 

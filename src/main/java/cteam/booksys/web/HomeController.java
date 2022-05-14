@@ -11,7 +11,7 @@ public class HomeController {
     @GetMapping("/")
     public String home(@SessionAttribute(value = LoginConst.LOGIN_CUSTOMER, required = false) Long customerId) {
         if (customerId == null) {
-            return "start";
+            return "redirect:/login";
         }
         return "Main";
     }
