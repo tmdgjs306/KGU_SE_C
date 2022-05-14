@@ -42,7 +42,11 @@ public class LoginController {
         }
 
         HttpSession session = request.getSession(true);
-        session.setAttribute(LoginConst.LOGIN_CUSTOMER, loginCustomer.getId());
+        if (loginCustomer.isManager()) {
+            session.setAttribute("manager", loginCustomer.getId());
+            session.setAttribute(LoginConst.LOGIN_CUSTOMER, loginCustomer.getId());
+        }
+        else session.setAttribute(LoginConst.LOGIN_CUSTOMER, loginCustomer.getId());
 
         return "redirect:/";
     }

@@ -14,6 +14,8 @@ public class Customer {
     @Column(name = "customer_id")
     private Long id;
 
+    private boolean manager;
+
     private String name;
 
     private String phoneNumber;

@@ -9,7 +9,12 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 public class HomeController {
 
     @GetMapping("/")
-    public String home(@SessionAttribute(value = LoginConst.LOGIN_CUSTOMER, required = false) Long customerId) {
+    public String home(@SessionAttribute(value = LoginConst.LOGIN_CUSTOMER, required = false) Long customerId,
+                       @SessionAttribute(value = "manager", required = false) Long managerId) {
+        if (managerId != null) {
+            return "ManagerMain";
+        }
+
         if (customerId == null) {
             return "redirect:/login";
         }

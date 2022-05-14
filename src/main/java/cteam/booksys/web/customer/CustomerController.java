@@ -22,7 +22,7 @@ public class CustomerController {
     }
 
     @PostMapping("/customers/join")
-    private String join(@ModelAttribute JoinForm joinForm, BindingResult bindingResult) {
+    public String join(@ModelAttribute JoinForm joinForm, BindingResult bindingResult) {
 
         cs.createCustomer(joinForm.getName(), joinForm.getPhoneNumber(), joinForm.getLoginId(), joinForm.getPw());
 

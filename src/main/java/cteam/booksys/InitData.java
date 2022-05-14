@@ -1,5 +1,7 @@
 package cteam.booksys;
 
+import cteam.booksys.domain.customer.Customer;
+import cteam.booksys.domain.customer.CustomerRepository;
 import cteam.booksys.domain.table.Tables;
 import cteam.booksys.domain.table.TableRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,13 +20,16 @@ public class InitData {
     public void initTable() {
 
         init.initTable();
+        init.initManager();
     }
 
     @Component
     @RequiredArgsConstructor
     @Transactional
     static class Init {
+
         private final TableRepository tr;
+        private final CustomerRepository cr;
 
         public void initTable() {
             tr.createTable(new Tables(4));
@@ -35,6 +40,12 @@ public class InitData {
             tr.createTable(new Tables(2));
             tr.createTable(new Tables(2));
             tr.createTable(new Tables(8));
+        }
+
+        public void initManager() {
+            Customer customer = new Customer("managerA", "01012341234", "managerA", "hello");
+            customer.setManager(true);
+            cr.createCustomer(customer);
         }
     }
 
