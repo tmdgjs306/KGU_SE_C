@@ -30,6 +30,12 @@ public class CustomerRepository {
                 .getSingleResult();
     }
 
+    public List<Customer> getAllCustomer() {
+        String query = "select c from Customer c";
+        return em.createQuery(query, Customer.class)
+                .getResultList();
+    }
+
     public Optional<Customer> getCustomerByLoginId(String loginId) {
         String query = "select c from Customer c where c.loginId = :loginId";
         List<Customer> customers = em.createQuery(query, Customer.class)

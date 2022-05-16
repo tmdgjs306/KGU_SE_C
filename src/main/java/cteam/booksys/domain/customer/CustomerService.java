@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CustomerService {
@@ -22,5 +24,9 @@ public class CustomerService {
 
     public Customer getCustomerById(Long customerId) {
         return cr.getCustomerById(customerId);
+    }
+
+    public List<Customer> getCustomers() {
+        return cr.getAllCustomer();
     }
 }
