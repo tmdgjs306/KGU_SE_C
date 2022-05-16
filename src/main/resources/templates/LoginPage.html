@@ -138,7 +138,7 @@
                 <input th:field="*{loginId}" style ="margin: 0px 0px 0px 300px;" class = 'd' type="text" id="ID" placeHolder="아이디">
               <div style="height: 10px; width: 491px; margin: 0px 0px 0px 0px;">  <input type="submit" class="testbtn" value="로그인" style="width: 112px; height: 72px; " onclick = "login()" ></div>
                 <input th:field="*{pw}" type="password" style ="margin: 0px 0px 0px 300px;" id="PW" placeholder="비밀번호"><div></div>
-                <div th:if="${#fields.hasGlobalErrors()}">
+                <div th:if="${#fields.hasGlobalErrors()}" style ="margin: 0px 0px 0px 300px;">
                   <p class="field-error" th:each="err : ${#fields.globalErrors()}"
                      th:text="${err}">글로벌 오류 메시지</p>
                 </div>

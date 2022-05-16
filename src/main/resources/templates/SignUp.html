@@ -78,7 +78,9 @@
   ======================================================== -->
   
   <style>
-  
+    .field-error {
+      border-color: #dc3545;
+      color: #dc3545;
   </style>
   
 </head>
@@ -149,7 +151,9 @@
                 <input th:field="*{phoneNumber}" style ="margin: 0px 0px 0px 300px;"  type="text" id="Phone" placeholder="전화번호" required><div></div>
                 <p></p>
                 <input th:field="*{loginId}" style ="margin: 0px 0px 0px 300px;" class = 'd' type="text" id="Id" placeHolder="아이디" required>
-                <div style="height: 9px; width: 450px; margin: 0px 0px 0px 0px;">  <input type="submit" class="test" value="중복확인" style="width: 50px; height: 29px; " onclick="Message()"></div>
+<!--                <div style="height: 9px; width: 450px; margin: 0px 0px 0px 0px;">  <input type="submit" class="test" value="중복확인" style="width: 50px; height: 29px; " onclick="Message()"></div>-->
+                <div th:class="field-error" th:errors="*{loginId}" style ="margin: 0px 0px 0px 300px;"></div>
+                <p></p>
                 <p></p>
                 <input th:field="*{pw}" style ="margin: 0px 0px 0px 300px;" class = 'd' type="password" id="PassWord" placeHolder="비밀번호" required>
                 <button style="height: 9px; width: 450px; margin: 0px 0px 0px 0px"><input type="submit" class="okay" value="확인(제출)" style="width: 80px; height: 29px; "></button>
