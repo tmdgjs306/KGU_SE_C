@@ -309,6 +309,26 @@
   <!-- Template Main JS File -->
   <script src="/assets/js/main.js"></script>
 
+  <!-- 취소 버튼 -->
+  <script>
+    function cancel(id) {
+      var form = document.createElement("form");
+      form.setAttribute("method", "post");
+      form.setAttribute("action", "/reservations/" + id + "/cancel");
+      document.body.appendChild(form);
+      form.submit();
+    }</script>
+
+  <!-- 테이블 변경 버튼 -->
+  <script>
+    function change(id) {
+      var form = document.createElement("form");
+      form.setAttribute("method", "get");
+      form.setAttribute("action", "/reservations/" + id + "/update");
+      document.body.appendChild(form);
+      form.submit();
+    }</script>
+
 </body>
 
 </html>
